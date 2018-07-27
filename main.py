@@ -33,8 +33,8 @@ printer      = Adafruit_Thermal("/dev/serial0", 19200, timeout=5)
 # Called when button is briefly tapped.  Invokes time/temperature script.
 def tap():
   GPIO.output(ledPin, GPIO.HIGH)  # LED on while working
-  #subprocess.call(["python", "picasso_weather.py"])
-  #subprocess.call(["python", "picasso_news.py"])
+  subprocess.call(["python", "picasso_weather.py"])
+  subprocess.call(["python", "picasso_news.py"])
   subprocess.call(["python", "picasso_twitter.py"])
   GPIO.output(ledPin, GPIO.LOW)
 
@@ -100,7 +100,12 @@ except:
 	exit(0)
 
 # Print greeting image
-printer.printImage(Image.open('gfx/hello.png'), True)
+#printer.printImage(Image.open('gfx/hello.png'), True)
+printer.boldOn()
+printer.println('{:^32}'.format('Picasso'))
+printer.boldOff()
+printer.println('Master IT Management SS18')
+printer.println('Christian Zirkel & Matthias Frisch')
 printer.feed(3)
 GPIO.output(ledPin, GPIO.LOW)
 
