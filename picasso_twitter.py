@@ -19,7 +19,7 @@ def twitter(idx):
     printer.println('{:^32}'.format(name + " - " + screen_name))
     printer.boldOff()
 
-    printer.println(text)
+    printer.println(text.replace(u'\2026', '...').encode('utf-8'))
     #printer.println(' ' + cond.replace(u'\u2013', '-').encode('utf-8')) # take care of pesky unicode dash
 
 printer = Adafruit_Thermal("/dev/serial0", 19200, timeout=5)
