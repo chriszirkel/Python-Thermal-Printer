@@ -34,6 +34,7 @@ printer      = Adafruit_Thermal("/dev/serial0", 19200, timeout=5)
 def tap():
   GPIO.output(ledPin, GPIO.HIGH)  # LED on while working
   #subprocess.call(["python", "timetemp.py"])
+  subprocess.call(["python", "picasso_weather.py"])
   GPIO.output(ledPin, GPIO.LOW)
 
 
