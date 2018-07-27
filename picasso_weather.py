@@ -1,29 +1,11 @@
 #!/usr/bin/python
 
-# Weather forecast for Raspberry Pi w/Adafruit Mini Thermal Printer.
-# Retrieves data from DarkSky.net's API, prints current conditions and
-# forecasts for next two days.  See timetemp.py for a different
-# weather example using nice bitmaps.
-# Written by Adafruit Industries.  MIT license.
-# 
-# Required software includes Adafruit_Thermal and PySerial libraries.
-# Other libraries used are part of stock Python install.
-# 
-# Resources:
-# http://www.adafruit.com/products/597 Mini Thermal Receipt Printer
-# http://www.adafruit.com/products/600 Printer starter pack
-
 from __future__ import print_function
 from Adafruit_Thermal import *
 from datetime import date
 from datetime import datetime
 import calendar
 import urllib, json
-
-API_KEY = "YOUR_API_KEY"
-
-LAT = "40.726019"
-LONG = "-74.00536"
 
 # Dumps one forecast line to the printer
 def forecast(idx):
@@ -53,12 +35,12 @@ data = json.loads(response.read())
 # Print heading
 printer.inverseOn()
 #printer.print('{:^32}'.format("DarkSky.Net Forecast"))
-printer.println('{:^32}'.format(data["body"]["title"]))
+printer.println('{:^32}'.format(data["body"]["title"].replace("Yahoo! ", "")))
 printer.inverseOff()
 
 # Print current conditions
 printer.boldOn()
-printer.println('{:^32}'.format('Current conditions:'))
+printer.print('{:^32}'.format('Current conditions:'))
 printer.boldOff()
 
 
