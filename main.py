@@ -33,7 +33,7 @@ printer      = Adafruit_Thermal("/dev/serial0", 19200, timeout=5)
 # Called when button is briefly tapped.  Invokes time/temperature script.
 def tap():
   GPIO.output(ledPin, GPIO.HIGH)  # LED on while working
-  subprocess.call(["python", "timetemp.py"])
+  #subprocess.call(["python", "timetemp.py"])
   GPIO.output(ledPin, GPIO.LOW)
 
 
@@ -161,7 +161,7 @@ while(True):
   # import thing.
   if t > nextInterval:
     nextInterval = t + 30.0
-    result = interval()
-    if result is not None:
-      lastId = result.rstrip('\r\n')
+    #result = interval()
+    #if result is not None:
+    #  lastId = result.rstrip('\r\n')
 
