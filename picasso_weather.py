@@ -58,7 +58,7 @@ printer.inverseOff()
 
 # Print current conditions
 printer.boldOn()
-printer.print('{:^32}'.format('Current conditions:'))
+printer.println('{:^32}'.format('Current conditions:'))
 printer.boldOff()
 
 
