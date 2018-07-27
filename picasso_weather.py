@@ -53,7 +53,7 @@ data = json.loads(response.read())
 # Print heading
 printer.inverseOn()
 #printer.print('{:^32}'.format("DarkSky.Net Forecast"))
-printer.print('{:^32}'.format(data["body"]["item"]["title"]))
+printer.println('{:^32}'.format(data["body"]["title"]))
 printer.inverseOff()
 
 # Print current conditions
