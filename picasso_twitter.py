@@ -25,7 +25,7 @@ def twitter(idx):
     #printer.println(' ' + cond.replace(u'\u2013', '-').encode('utf-8')) # take care of pesky unicode dash
 
 def to_ascii(text):
-    return unidecode(unicode(text, encoding = "utf-8"))
+    return unidecode(text)
 
 printer = Adafruit_Thermal("/dev/serial0", 19200, timeout=5)
 #deg     = chr(0xf8) # Degree symbol on thermal printer
