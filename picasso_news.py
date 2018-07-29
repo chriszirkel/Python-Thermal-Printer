@@ -6,6 +6,7 @@ from datetime import date
 from datetime import datetime
 import calendar
 import urllib, json
+from unidecode import unidecode
 
 # Dumps one forecast line to the printer
 def news(idx):
@@ -14,8 +15,8 @@ def news(idx):
 
     news = data["body"][idx]
 
-    name = news["source"]["name"]
-    title = news["title"]
+    name = to_ascii(news["source"]["name"])
+    title = to_ascii(news["title"])
 
     printer.boldOn()
     printer.println('{:^32}'.format(name))
@@ -23,6 +24,9 @@ def news(idx):
 
     printer.println(title)
     #printer.println(' ' + cond.replace(u'\u2013', '-').encode('utf-8')) # take care of pesky unicode dash
+
+def to_ascii(text):
+    return unidecode(unicode(text, encoding = "utf-8"))
 
 printer = Adafruit_Thermal("/dev/serial0", 19200, timeout=5)
 #deg     = chr(0xf8) # Degree symbol on thermal printer
