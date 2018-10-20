@@ -19,6 +19,7 @@ def comptrain(data):
     for line in lines:
         i += 1
         text = to_ascii(line)
+        text = text.replace('"', '')
 
         if i == 1:
             printer.boldOn()
