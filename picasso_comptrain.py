@@ -39,6 +39,8 @@ url = "https://8ukyst5l4f.execute-api.us-east-1.amazonaws.com/dev/comptrain/open
 response = urllib.urlopen(url)
 data = response.read()
 
+print(data)
+
 # Print heading
 printer.inverseOn()
 printer.println('{:^32}'.format("CompTrain"))
