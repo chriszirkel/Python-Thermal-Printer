@@ -29,7 +29,8 @@ tapTime = 0.01  # Debounce time for button taps
 nextInterval = 0.0   # Time of next recurring operation
 dailyFlag = False  # Set after daily trigger occurs
 lastId = '1'   # State information passed to/from interval script
-printer = Adafruit_Thermal("/dev/serial0", 19200, timeout=5)
+#printer = Adafruit_Thermal("/dev/serial0", 19200, timeout=5)
+printer = Adafruit_Thermal("/dev/ttyS0", 19200, timeout=5)
 
 
 # Called when button is briefly tapped.  Invokes time/temperature script.
@@ -38,7 +39,7 @@ def tap():
     #subprocess.call(["python", "picasso_weather.py"])
     #subprocess.call(["python", "picasso_news.py"])
     #subprocess.call(["python", "picasso_twitter.py"])
-    subprocess.call(["python", "picasso_comptrain.py"])
+    subprocess.call(["python3", "picasso_comptrain.py"])
     GPIO.output(ledPin, GPIO.LOW)
 
 
@@ -57,7 +58,7 @@ def hold():
 # Invokes twitter script.
 def interval():
     GPIO.output(ledPin, GPIO.HIGH)
-    p = subprocess.Popen(["python", "twitter.py", str(lastId)],
+    p = subprocess.Popen(["python3", "twitter.py", str(lastId)],
                          stdout=subprocess.PIPE)
     GPIO.output(ledPin, GPIO.LOW)
     return p.communicate()[0]  # Script pipes back lastId, returned to main
@@ -67,7 +68,7 @@ def interval():
 # Invokes weather forecast and sudoku-gfx scripts.
 def daily():
     GPIO.output(ledPin, GPIO.HIGH)
-    subprocess.call(["python", "picasso_comptrain.py"])
+    subprocess.call(["python3", "picasso_comptrain.py"])
     #subprocess.call(["python", "forecast.py"])
     #subprocess.call(["python", "sudoku-gfx.py"])
     GPIO.output(ledPin, GPIO.LOW)
