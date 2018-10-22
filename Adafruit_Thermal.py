@@ -34,7 +34,7 @@
 
 # Python 2.X code using the library usu. needs to include the next line:
 from __future__ import print_function
-from serial import Serial
+from serial import Serial #pip3 install pyserial
 import time
 import math
 

@@ -5,7 +5,8 @@ from Adafruit_Thermal import *
 from datetime import date
 from datetime import datetime
 import calendar
-import urllib
+#import urllib
+import requests
 import json
 from unidecode import unidecode
 
@@ -37,8 +38,10 @@ def to_ascii(text):
 printer = Adafruit_Thermal("/dev/ttyS0", 19200, timeout=5)
 
 url = "https://8ukyst5l4f.execute-api.us-east-1.amazonaws.com/dev/comptrain/open"
-response = urllib.urlopen(url)
-data = response.read()
+#response = urllib.urlopen(url)
+#data = response.read()
+response = requests.get(url)
+data = response.text
 
 print(data)
 
