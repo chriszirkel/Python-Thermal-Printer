@@ -43,7 +43,7 @@ url = "https://8ukyst5l4f.execute-api.us-east-1.amazonaws.com/dev/comptrain/open
 response = requests.get(url)
 data = response.text
 
-print(data)
+print(to_ascii(data))
 
 # Print heading
 printer.inverseOn()
