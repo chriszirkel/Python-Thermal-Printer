@@ -33,7 +33,8 @@ def to_ascii(text):
     return unidecode(text)
 
 
-printer = Adafruit_Thermal("/dev/serial0", 19200, timeout=5)
+#printer = Adafruit_Thermal("/dev/serial0", 19200, timeout=5)
+printer = Adafruit_Thermal("/dev/ttyS0", 19200, timeout=5)
 
 url = "https://8ukyst5l4f.execute-api.us-east-1.amazonaws.com/dev/comptrain/open"
 response = urllib.urlopen(url)
