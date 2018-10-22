@@ -5,7 +5,6 @@ import gfx.adalogo as adalogo
 from Adafruit_Thermal import *
 
 #printer = Adafruit_Thermal("/dev/serial0", 19200, timeout=5)
-printer = Adafruit_Thermal("/dev/ttyS0", 19200, timeout=5)
 
 # Test inverse on & off
 printer.inverseOn()
